@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #define SIZE 5
 
-
-int main(int argc, char *argv[])
-{
+int evaluate(void) {
+    
     int grade[SIZE];
     int value;
     int index;
-    int avg;
+    float avg;
     int sum = 0;
     int value_a = 0;
     int value_b = 0;
@@ -16,14 +15,8 @@ int main(int argc, char *argv[])
     
     printf("Enter five, integer grades:\n\n");
     scanf("%d", &value);
-    
-    
-    if (value >= 70 && value <= 100) {
-              grade[0] = value;
-              sum = sum + value;
-              index++;
               
-              for (index = 1; index < (SIZE-1) && value >= 70 && value <= 100; index++) {
+              for (index = 0; index < (SIZE-1) && value >= 70 && value <= 100; index++) {
                   
                   if (value >= 70 && value <= 79) {
                             grade[index] = value;
@@ -45,10 +38,12 @@ int main(int argc, char *argv[])
                                       
                                       else if (value < 70) {
                                            printf("Grade must be greater than 70.\n\n");
+                                           evaluate();
                                            }
                                            
                                            else if (value > 100) {
                                                 printf("Grade must be less than 100.\n\n");
+                                                evaluate();
                                                 }
                 
         scanf("%d", &value);
@@ -75,24 +70,43 @@ int main(int argc, char *argv[])
                             
                             else if (value < 70) {
                                  printf("Grade must be greater than 70.\n\n");
+                                 evaluate();
                                  }
                                  
                                  else if (value > 100) {
                                       printf("Grade must be less than 100.\n\n");
+                                      evaluate();
                                       }
         
-        avg = sum / (SIZE-1);  // average grade
+        printf("%d", sum);
+        avg = sum / SIZE;  // average grade
         
-        printf("\nThe average grade is:  %d\n\n", avg);
+        printf("\nThe average grade is:  %.2f\n\n", avg);
         printf("The number of A's is %d\n\n", value_a);
         printf("The number of B's is %d\n\n", value_b);
         printf("The number of C's is %d\n\n", value_c);
-        }
         
-        else {
-             printf("Grades must be integers between 70 and 100.\n\n");
-             }
+        
+  _Bool start;
+  int num;
+ 
+  printf("Press 1 to continue or q to quit.\n\n");
+  start = (scanf("%d", &num) == 1);
   
-  system("PAUSE");	
-  return 0;
+  if (start ==1) {
+  evaluate();
 }
+  else {
+       printf("\n");
+       }
+}
+
+int main(int argc, char *argv[]) {
+
+  evaluate();
+
+  system("PAUSE");
+  return 0;
+  
+}
+
