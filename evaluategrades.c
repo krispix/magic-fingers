@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 5
+#define SIZE 5  // constant named SIZE has value 5
 
-int evaluate(void) {
+int evaluate(void) {  // function named evaluate
     
     int grade[SIZE];  // array with a size defined by SIZE
     int value; // value that the user enters
@@ -56,57 +56,53 @@ int evaluate(void) {
                   value_c++;  // ...and add 1 to the count of C grades
                   }
                   
-                  else if (value >= 80 && value <= 89) {
-                       grade[index] = value;
-                       sum = sum + value;
-                       value_b++;  // count B grades
+                  else if (value >= 80 && value <= 89) {  // if a value is between 80 and 89...
+                       grade[index] = value;  // ...assign it to grade[index]...
+                       sum = sum + value;  // ...add it to the current value of sum...
+                       value_b++;  // ...and add 1 to the count of B grades
                        }
                        
-                       else if (value >= 90 && value <= 100) {
-                            grade[index] = value;
-                            sum = sum + value;
-                            value_a++;  // count A grades
+                       else if (value >= 90 && value <= 100) {  // if a value is between 90 and 100...
+                            grade[index] = value;  // ...assign it to grade[index]...
+                            sum = sum + value; // ...add it to the current value of sum...
+                            value_a++;  // ...and add 1 to the count of A grades
                             }
                             
-                            else if (value < 70) {
-                                 printf("Grade must be greater than 70.\n\n");
-                                 evaluate();
+                            else if (value < 70) {  // if a value is less than 70...
+                                 printf("Grade must be greater than 70.\n\n");  // ...tell the user they suck...
+                                 evaluate();  //...and restart the function
                                  }
                                  
-                                 else if (value > 100) {
-                                      printf("Grade must be less than 100.\n\n");
-                                      evaluate();
+                                 else if (value > 100) {  // if a value is greater than 100...
+                                      printf("Grade must be less than 100.\n\n");  // ...tell the user they suck...
+                                      evaluate();  // ...and restart the function
                                       }
         
-        printf("%d", sum);
-        avg = sum / SIZE;  // average grade
+
+        avg = sum / SIZE;  // calculates average grade
         
-        printf("\nThe average grade is:  %.2f\n\n", avg);
-        printf("The number of A's is %d\n\n", value_a);
-        printf("The number of B's is %d\n\n", value_b);
-        printf("The number of C's is %d\n\n", value_c);
+        printf("\n\nThe average grade is:  %.2f\n\n", avg);  // prints average grade
+        printf("The number of A's is %d\n\n", value_a);  // prints number of A's
+        printf("The number of B's is %d\n\n", value_b);  // prints number of B's
+        printf("The number of C's is %d\n\n", value_c);  // prints number of C's
         
         
-  _Bool start;
-  int num;
+  _Bool start;  // need this to be a boolean to allow user to quit
+  int num;  // declaring num as int
  
-  printf("Press 1 to continue or q to quit.\n\n");
-  start = (scanf("%d", &num) == 1);
+  printf("Press 1 to continue or q to quit.\n\n");  // promps user for input
+  start = (scanf("%d", &num) == 1);  // user input; start = 1 if num is an int
   
-  if (start ==1) {
-  evaluate();
-}
-  else {
-       printf("\n");
-       }
-}
+  if (start ==1) {  // if start is equal to one...
+  evaluate();  // restart the function again, hooray!
+  }
+  }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {  // main function
 
-  evaluate();
+  evaluate();  // calls evaluate(); i was told not to have main call itself, so i made a separate function
 
-  system("PAUSE");
-  return 0;
+  return 0;  // EXIT_SUCCESS!
   
 }
 
